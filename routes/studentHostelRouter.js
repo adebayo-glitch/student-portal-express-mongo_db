@@ -31,4 +31,18 @@ router.get('/hostels/:id/edit', (request, response) => {
     response.render('hostel-edit', { hostel, courses, students  });
   });
   
+  // // Update student hostel
+  router.put('/hostels/:id', (request, response) => {
+    const hostelIndex = hostels.findIndex(s => s.id == request.params.id);
+    if (hostelIndex === -1) return response.status(404).send('Hostel not found');
+    hostels[hostelIndex] = {
+      ...hostels[hostelIndex],
+      firstName: request.body.firstName,
+      lastName: request.body.lastName,
+      studentId: request.body.studentId,
+      studentHostel: request.body.studentHostel,
+      studentRoom: request.body.studentRoom,
+    };
+    response.redirect('/hostels');
+  });
   module.exports = router;
