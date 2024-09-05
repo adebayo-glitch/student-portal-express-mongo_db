@@ -53,6 +53,17 @@ router.put('/students/:id', (request, response) => {
     response.redirect('/courses');
   });
 
+  
+// Delete student course
+router.delete('/students/:id', (request, response) => {
+    const studentId = request.params.id;
+    const studentIndex = students.findIndex(student => student.id === studentId);
+    if (studentIndex === -1) {
+      return response.status(404).send('Student not found');
+    }
+    students.splice(studentIndex, 1);
+    response.status(200).send('Student deleted successfully');
+  });
 
   
   module.exports = router;
