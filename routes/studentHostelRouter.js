@@ -45,4 +45,16 @@ router.get('/hostels/:id/edit', (request, response) => {
     };
     response.redirect('/hostels');
   });
+
+  
+// Delete student hostel
+router.delete('/hostels/:id', (request, response) => {
+    const hostelId = request.params.id;
+    const hostelIndex = hostels.findIndex(hostel => hostel.id === hostelId);
+    if (hostelIndex === -1) {
+      return response.status(404).send('Hostel not found');
+    }
+    hostels.splice(hostelIndex, 1);
+    response.status(200).send('Hostel deleted successfully');
+  });
   module.exports = router;
