@@ -31,10 +31,10 @@ footer {
     transition: background-color 0.3s ease;
 }
 
-
+/* 
 header:hover, footer:hover {
     background: linear-gradient(135deg, var(--gradient-end), var(--gradient-start));
-}
+} */
 
 nav ul {
     list-style-type: none;
@@ -53,10 +53,6 @@ nav ul li a {
 
 }
 
-nav ul li a:hover {
-    font-size: larger;
-    color: #0692a7;
-}
 
 .animated-title {
     animation: fadeInDown 6s ease-out;
@@ -77,7 +73,8 @@ nav ul li a:hover {
 main {
     padding: 1rem;
     max-width: 1000px;
-    /* margin: 0 auto; */
+    margin: 0 auto; 
+    margin-bottom: 17rem;
 }
 
 form {
@@ -93,7 +90,7 @@ label {
 }
 
 input, select {
-    width: 100%;
+    width: 90%;
     padding: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid #ddd;
@@ -108,6 +105,7 @@ button {
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    font-size: 1.0rem;
     transition: all 0.3s ease;
 }
 
@@ -155,4 +153,25 @@ tr:last-child td {
 
 .delete-btn:hover {
     background: linear-gradient(135deg, #ff5b62, #ff4136);
+}
+
+.course {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+a {
+    text-decoration: none;
+    color: #fff;
 }
