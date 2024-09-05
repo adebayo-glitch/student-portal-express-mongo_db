@@ -3,44 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Record Application</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Student Portal | Home</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
     <header>
         <h1 class="animated-title">Student Portal </h1>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="courses">Course Registration </a></li>
-                <li><a href="hostel">Hostel Registration </a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/courses">Course Registration </a></li>
+                <li><a href="/hostels">Hostel Registration </a></li>
             </ul>
         </nav>
     </header>
     <main>
         <section id="home">
-            <h2>Welcome student_name to your portal</h2>
+            <h2>Welcome to the student portal</h2>
             <p>Click the button below to register for your course and reserve your hostel</p>
-            <button type="submit">Course Registration</button>
-            <button type="submit">Hostel Registration</button>
+            <button type="submit"><a href="/courses">Course Registration</a></button>
+            <button type="submit"><a href="/hostels">Hostel Registration</a></button>
         
         </section>
     
 
     </main>
     <footer>
-        <p>&copy; 2024 Student Record Application</p>
+        <p>&copy; 2024 Student Portal Application</p>
     </footer>
-    <template id="studentTemplate">
-        <tr class="student-item">
-            <td><img class="student-image" src="" alt="Student Image"></td>
-            <td class="student-name"></td>
-            <td class="student-id"></td>
-            <td class="student-subject"></td>
-            <td class="student-grade"></td>
-            <td><button class="delete-btn">Delete</button></td>
-        </tr>
-    </template>
+   
    
 </body>
 </html>

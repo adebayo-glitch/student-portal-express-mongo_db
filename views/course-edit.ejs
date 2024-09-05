@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal | Edit</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1 class="animated-title">Student Portal </h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/courses">Course Registration </a></li>
+                <li><a href="/hostels">Hostel Registration </a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Update Courses</h2>
+            
+        </section>
+        <section id="studentForm">
+           
+            <form id="addCourseForm" action="/students/<%= student.id %>?_method=PUT" method="POST">
+                <input type="hidden" name="_method" value="PUT">
+                <label for="firstName">First name:</label>
+                <input type="text" id="firstName" name="firstName" value="<%= student.firstName %>" required minlength="2">
+
+                <label for="lastName">Last name:</label>
+                <input type="text" id="lastName" name="lastName" value="<%= student.lastName %>" required minlength="2">
+
+                <label for="studentId">Student ID:</label>
+                <input type="text" id="studentId" name="studentId" value="<%= student.studentId %>" required pattern="[A-Z]{2}[0-9]{4}">
+
+                <label for="studentDepartment">Department:</label>
+                <select id="studentDepartment" name="studentDepartment" required>
+                    <option value="">Select your Department</option>
+                    <option value="Software Engineering" <%= student.studentDepartment === 'Software Engineering' ? 'selected' : '' %>>Software Engineering</option>
+                    <option value="Cyber Security" <%= student.studentDepartment === 'Cyber Security' ? 'selected' : '' %>>Cyber Security</option>
+                </select>
+
+                <label for="studentSession">Session:</label>
+                <select id="studentSession" name="studentSession" required>
+                    <option value="">Select your seesion</option>
+                    <option value="2024/2025" <%= student.studentSession === '2024/2025' ? 'selected' : '' %>>2024/2025</option>
+                    <option value="2025/2026" <%= student.studentSession === '2024/2025' ? 'selected' : '' %>>2025/2026</option>
+                </select>
+                
+                <div class="courses-container">
+                    <h2>Select Your Courses</h2>
+                        <% courses.forEach(course => { %>
+                            <% const courseValue = `${course.code} (${course.name})`; %>
+                            <div class="course">
+                                <input type="checkbox" 
+                                    id="<%= course.id %>" 
+                                    name="courses" 
+                                    value="<%= courseValue %>"
+                                    <%= student.courses.includes(courseValue) ? 'checked' : '' %>>
+                                <label for="<%= course.id %>"><%= courseValue %></label>
+                            </div>
+                        <% }); %>
+                </div>
+
+                <button type="submit">Update</button>
+            </form>
+        </section>
+        
+    </main>
+    <footer>
+        <p>&copy; 2024 Student Portal Application</p>
+    </footer>
+</body>
+</html>
