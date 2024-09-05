@@ -28,6 +28,14 @@ router.post('/courses', (request, response) => {
     response.redirect('/courses');
   });
 
+   
+// Edit student courses
+router.get('/students/:id/edit', (request, response) => {
+    const student  = students.find(student => student.id === request.params.id);
+    if (!student ) return response.status(404).send('Course not found');
+    response.render('course-edit', { student, courses  });
+  });
+
 
   
   module.exports = router;
