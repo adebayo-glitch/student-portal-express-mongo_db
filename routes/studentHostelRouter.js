@@ -24,4 +24,11 @@ router.post('/hostels', (request, response) => {
   });
  
   
+// Edit student hostel
+router.get('/hostels/:id/edit', (request, response) => {
+    const hostel  = hostels.find(hostel => hostel.id === request.params.id);
+    if (!hostel ) return response.status(404).send('Hostel not found');
+    response.render('hostel-edit', { hostel, courses, students  });
+  });
+  
   module.exports = router;
