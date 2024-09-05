@@ -36,6 +36,23 @@ router.get('/students/:id/edit', (request, response) => {
     response.render('course-edit', { student, courses  });
   });
 
+  
+// Update student courses
+router.put('/students/:id', (request, response) => {
+    const studentIndex = students.findIndex(s => s.id == request.params.id);
+    if (studentIndex === -1) return response.status(404).send('Student not found');
+    students[studentIndex] = {
+      ...students[studentIndex],
+      firstName: request.body.firstName,
+      lastName: request.body.lastName,
+      studentId: request.body.studentId,
+      studentDepartment: request.body.studentDepartment,
+      studentSession: request.body.studentSession,
+      courses: Array.isArray(request.body.courses) ? request.body.courses : [request.body.courses]
+    };
+    response.redirect('/courses');
+  });
+
 
   
   module.exports = router;
