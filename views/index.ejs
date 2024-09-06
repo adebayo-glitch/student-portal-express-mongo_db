@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Portal | Home</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -12,8 +12,10 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/courses">Course Registration </a></li>
-                <li><a href="/hostels">Hostel Registration </a></li>
+                <li><a href="/courses">Courses </a></li>
+                <li><a href="/register-courses">Course Registration </a></li>
+                <li><a href="/hostels">Hostels </a></li>
+                <li><a href="/register-hostels">Hostel Registration </a></li>
             </ul>
         </nav>
     </header>
@@ -21,12 +23,9 @@
         <section id="home">
             <h2>Welcome to the student portal</h2>
             <p>Click the button below to register for your course and reserve your hostel</p>
-            <button type="submit"><a href="/courses">Course Registration</a></button>
-            <button type="submit"><a href="/hostels">Hostel Registration</a></button>
-        
+            <a href="/register-courses"><button type="submit" class="register-course">Course Registration</button></a>
+            <a href="/register-hostels"><button type="submit" class="register-hostel">Hostel Registration</button></a>
         </section>
-    
-
     </main>
     <footer>
         <p>&copy; 2024 Student Portal Application</p>

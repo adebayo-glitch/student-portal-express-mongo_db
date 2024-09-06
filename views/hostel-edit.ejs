@@ -12,15 +12,16 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/courses">Course Registration </a></li>
-                <li><a href="/hostels">Hostel Registration </a></li>
+                <li><a href="/courses">Courses </a></li>
+                <li><a href="/register-courses">Course Registration </a></li>
+                <li><a href="/hostels">Hostels </a></li>
+                <li><a href="/register-hostels">Hostel Registration </a></li>
             </ul>
         </nav>
     </header>
     <main>
         <section id="home">
             <h2>Update Hostels</h2>
-            
         </section>
         <section id="studentForm">
            
@@ -34,26 +35,23 @@
 
                 <label for="studentId">Student ID:</label>
                 <input type="text" id="studentId" name="studentId" value="<%= hostel.studentId %>" required pattern="[A-Z]{2}[0-9]{4}">
-
                 
                 <label for="studentHostel">Hostel name:</label>
                 <select id="studentHostel" name="studentHostel" required>
                     <option value="">Select Hostel Name</option>
-                    <option value="Gate Hall" <%= hostel.studentHostel === 'Gate Hall' ? 'selected' : '' %>Gate Hall</option>
-                    <option value="Billy Hall" <%= hostel.studentHostel === 'Billy Hall' ? 'selected' : '' %>Billy Hall</option>
+                    <option value="Gate Hall" <%= (hostel && hostel.studentHostel === 'Gate Hall') ? 'selected' : '' %>>Gate Hall</option>
+                    <option value="Billy Hall" <%= (hostel && hostel.studentHostel === 'Billy Hall') ? 'selected' : '' %>>Billy Hall</option>
                 </select>
-
+                
                 <label for="studentRoom">Room Number:</label>
                 <select id="studentRoom" name="studentRoom" required>
                     <option value="">Select Room Number</option>
-                    <option value="201" <%= hostel.studentRoom === '201' ? 'selected' : '' %>201</option>
-                    <option value="202" <%= hostel.studentRoom === '202' ? 'selected' : '' %>202</option>
-                    <option value="205" <%= hostel.studentRoom === '205' ? 'selected' : '' %>205</option>
-                    <option value="209" <%= hostel.studentRoom === '209' ? 'selected' : '' %>209</option>
-                   
+                    <option value="201" <%= (hostel && hostel.studentRoom === '201') ? 'selected' : '' %>>201</option>
+                    <option value="202" <%= (hostel && hostel.studentRoom === '202') ? 'selected' : '' %>>202</option>
+                    <option value="205" <%= (hostel && hostel.studentRoom === '205') ? 'selected' : '' %>>205</option>
+                    <option value="209" <%= (hostel && hostel.studentRoom === '209') ? 'selected' : '' %>>209</option>
                 </select>
-
-                <button type="submit">Update</button>
+                <button type="submit" class="register" style="display: flex;">Update</button>
             </form>
         </section>
         

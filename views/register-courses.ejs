@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1 class="animated-title">Student Portal </h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/courses">Courses </a></li>
+                <li><a href="/register-courses">Course Registration </a></li>
+                <li><a href="/hostels">Hostels </a></li>
+                <li><a href="/register-hostels">Hostel Registration </a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Course Registration</h2>
+            <p>Use the form below to register for your courses.</p>
+        </section>
+        <section id="studentForm">
+           
+            <form id="addCourseForm" action="/register-courses" method="POST">
+                <label for="firstName">First name:</label>
+                <input type="text" id="firstName" name="firstName" required minlength="2">
+                <label for="lastName">Last name:</label>
+                <input type="text" id="lastName" name="lastName" required minlength="2">
+                <label for="studentId">Student ID:</label>
+                <input type="text" id="studentId" name="studentId" required pattern="[A-Z]{2}[0-9]{4}">
+                <label for="studentDepartment">Department:</label>
+                <select id="studentDepartment" name="studentDepartment" required>
+                    <option value="">Select your Department</option>
+                    <option value="Software Engineering">Software Engineer</option>
+                    <option value="Cyber Security">Cyber Security</option>
+                </select>
+
+                <label for="studentSession">Session:</label>
+                <select id="studentSession" name="studentSession" required>
+                    <option value="">Select your session</option>
+                    <option value="2024/2025">2024/2025 </option>
+                    <option value="2025/2026">2025/2026</option>
+                </select>
+                
+                <div class="courses-container">
+                    <h2>Select Your Courses</h2>
+                    <% courses.forEach(course => { %>
+                        <div class="course">
+                            <input type="checkbox" id="<%= course.id %>" name="courses" value="<%= course.code %> (<%= course.name %>)">
+                            <label for="<%= course.id %>"><%= course.code %> (<%= course.name %>)</label>
+                        </div>
+                    <% }); %>
+                </div>
+
+                <button type="submit" class="register">Register</button>
+            </form>
+        </section>
+  
+    </main>
+    <footer>
+        <p>&copy; 2024 Student Portal Application</p>
+    </footer>
+      
+</body>
+</html>

@@ -99,7 +99,6 @@ input, select {
 
 
 button {
-    background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
     color: #fff;
     padding: 0.5rem 1rem;
     border: none;
@@ -110,7 +109,7 @@ button {
 }
 
 button:hover {
-    background: linear-gradient(135deg, var(--button-gradient-end), var(--button-gradient-start));
+    /* background: linear-gradient(135deg, var(--button-gradient-end), var(--button-gradient-start)); */
     transform: translateY(-2px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -140,12 +139,6 @@ tr:last-child td {
     border-bottom: none;
 }
 
-.student-image {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-}
 
 .delete-btn {
     background: linear-gradient(135deg, #ff4136, #ff5b62);
@@ -171,7 +164,42 @@ h2 {
     margin-bottom: 20px;
     color: #333;
 }
+
 a {
     text-decoration: none;
     color: #fff;
+}
+
+.action-button {
+    cursor: pointer;
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.edit-button {
+    background-color: #4CAF50;
+}
+
+.delete-button {
+    background-color: #f44336;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.register-course{
+    background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
+}
+
+.register-hostel{
+    background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
+}
+
+.register{
+    background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
 }

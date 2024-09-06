@@ -2,17 +2,26 @@ const express = require('express');
 const router = express.Router();
 const { students, courses, hostels } = require('../models/data')
 
- // GET student hostel
+router.get('/', (request, response) => {
+    response.render('index', { title: 'Student Portal | Home' });
+})
+
+// GET student hostel
 router.get('/hostels', (request, response) => {
     response.render('hostels', { title: 'Student Portal | Hostel Registration', students, hostels });
   })
 
-    
-// POST student hostel 
-router.post('/hostels', (request, response) => {
+// GET student hostel registration
+router.get('/register-hostels', (request, response) => {
+    response.render('register-hostels', { title: 'Student Portal | Hostel Registration', students, hostels });
+  })
+  
+  
+// POST student hostel registration
+router.post('/register-hostels', (request, response) => {
     const { firstName, lastName, studentId, studentHostel, studentRoom } = request.body;
     const newHostel = {
-        id: `${Math.floor(Math.random() * 1000)}`,
+        id: `${Math.floor(Math.random() * 100)}`,
         firstName,
         lastName,
         studentId,
@@ -22,16 +31,15 @@ router.post('/hostels', (request, response) => {
     hostels.push(newHostel);
     response.redirect('/hostels');
   });
- 
-  
+
 // Edit student hostel
 router.get('/hostels/:id/edit', (request, response) => {
     const hostel  = hostels.find(hostel => hostel.id === request.params.id);
     if (!hostel ) return response.status(404).send('Hostel not found');
-    response.render('hostel-edit', { hostel, courses, students  });
+    response.render('hostel-edit', { hostel, students  });
   });
-  
-  // // Update student hostel
+
+// // Update student hostel
   router.put('/hostels/:id', (request, response) => {
     const hostelIndex = hostels.findIndex(s => s.id == request.params.id);
     if (hostelIndex === -1) return response.status(404).send('Hostel not found');
@@ -46,9 +54,8 @@ router.get('/hostels/:id/edit', (request, response) => {
     response.redirect('/hostels');
   });
 
-  
 // Delete student hostel
-router.delete('/hostels/:id', (request, response) => {
+  router.delete('/hostels/:id', (request, response) => {
     const hostelId = request.params.id;
     const hostelIndex = hostels.findIndex(hostel => hostel.id === hostelId);
     if (hostelIndex === -1) {
@@ -57,4 +64,5 @@ router.delete('/hostels/:id', (request, response) => {
     hostels.splice(hostelIndex, 1);
     response.status(200).send('Hostel deleted successfully');
   });
+  
   module.exports = router;
