@@ -25,7 +25,7 @@
         </section>
         <section id="studentForm">
            
-            <form id="addCourseForm" action="/<%= hostel.id %>?_method=PUT" method="POST">
+            <form id="addCourseForm" action="/hostels/<%= hostel.id %>?_method=PUT" method="POST">
                 <input type="hidden" name="_method" value="PUT">
                 <label for="firstName">First name:</label>
                 <input type="text" id="firstName" name="firstName" value="<%= hostel.firstName %>" required minlength="2">
