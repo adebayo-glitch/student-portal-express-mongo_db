@@ -4,6 +4,7 @@ const studentCourseRoutes = require('./routes/studentCourseRouter');
 const studentHostelRoutes = require('./routes/studentHostelRouter');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const connectDB = require('./config/database.js');
 
 // import middleware
 const logger = require('./middleware/logger');
@@ -11,6 +12,9 @@ const errorHandler = require('./middleware/handleError');
 
 const PORT = process.env.PORT || 3500
 const app = express()
+
+// Connect to MongoDB
+connectDB();
 
 // static files and middleware
 app.use(express.static('public'))
