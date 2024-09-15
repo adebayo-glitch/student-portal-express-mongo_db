@@ -42,13 +42,10 @@
                         <td><%= hostel.firstName %></td>
                         <td><%= hostel.lastName %></td>
                         <td><%= hostel.studentId %></td>
-                        <td><%= hostel.studentHostel %></td>
-                        <td><%= hostel.studentRoom %></td>
+                        <td><%= hostel.name %></td>
+                        <td><%= hostel.roomNumber %></td>
                         <td class="button-container">
-                            <a href="/hostels/<%= hostel.id %>/edit" style="text-decoration: none;">
-                                <button type="button" class="action-button edit-button">Edit</button>
-                            </a>
-                            <button class="action-button delete-button delete-btn" data-id="<%= hostel.id %>">Delete</button>
+                            <button class="action-button delete-button delete-btn" data-id="<%= hostel._id %>">Delete</button>
                         </td>
                 
                        
@@ -69,7 +66,7 @@
             if (!confirmed) return;
 
             try {
-            const response = await fetch(`/hostels/${hostelId}`, {
+            const response = await fetch(`/${hostelId}`, {
                 method: 'DELETE',
                 headers: {
                 'Content-Type': 'application/json'
