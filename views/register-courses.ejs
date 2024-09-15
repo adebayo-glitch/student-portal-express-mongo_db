@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <title>Student Portal | Course Registration</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -33,15 +33,15 @@
                 <input type="text" id="lastName" name="lastName" required minlength="2">
                 <label for="studentId">Student ID:</label>
                 <input type="text" id="studentId" name="studentId" required pattern="[A-Z]{2}[0-9]{4}">
-                <label for="studentDepartment">Department:</label>
-                <select id="studentDepartment" name="studentDepartment" required>
+                <label for="department">Department:</label>
+                <select id="department" name="department" required>
                     <option value="">Select your Department</option>
                     <option value="Software Engineering">Software Engineer</option>
                     <option value="Cyber Security">Cyber Security</option>
                 </select>
 
-                <label for="studentSession">Session:</label>
-                <select id="studentSession" name="studentSession" required>
+                <label for="session">Session:</label>
+                <select id="session" name="session" required>
                     <option value="">Select your session</option>
                     <option value="2024/2025">2024/2025 </option>
                     <option value="2025/2026">2025/2026</option>
@@ -51,7 +51,8 @@
                     <h2>Select Your Courses</h2>
                     <% courses.forEach(course => { %>
                         <div class="course">
-                            <input type="checkbox" id="<%= course.id %>" name="courses" value="<%= course.code %> (<%= course.name %>)">
+                            
+                            <input type="checkbox" id="<%= course._id %>" name="courses" value="<%= course._id %>">
                             <label for="<%= course.id %>"><%= course.code %> (<%= course.name %>)</label>
                         </div>
                     <% }); %>
