@@ -4,7 +4,7 @@ const methodOverride = require('method-override');
 const connectDB = require('./config/database.js');
 const studentRoutes = require('./routes/studentRoutes');
 // const courseRoutes = require('./routes/courseRoutes');
-// const hostelRoutes = require('./routes/hostelRoutes');
+const hostelRoutes = require('./routes/hostelRoutes');
 
 // import middleware
 const logger = require('./middleware/logger');
@@ -31,7 +31,7 @@ app.set("view engine","ejs")
 app.use(studentRoutes);
 // app.use(courseRoutes);
 // // app.use('/hostels', hostelRoutes);
-// app.use(hostelRoutes);
+app.use(hostelRoutes);
 
 app.get('/', (req, res) => {
     res.render('index', { title: 'Student Portal | Home' });
