@@ -38,4 +38,40 @@ exports.getStudentCourses = async (req, res) => {
     res.render('courses', { title: 'Student Portal | Course Registration', students, courses });
 };
 
+// Get student courses edit page
+exports.editStudent = async (req, res) => {
+    try {
+      const student = await Student.findById(req.params.id).populate('courses');
+      const courses = await Course.find();
+      if (!student) return res.status(404).send('Student not found');
+      res.render('course-edit', { student, courses });
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  };
+  
+  // Update student courses
+  exports.updateStudent = async (req, res) => {
+    try {
+      const { firstName, lastName, studentId, department, session, courses } = req.body;
+      const student = await Student.findByIdAndUpdate(req.params.id, {
+        firstName,
+        lastName,
+        studentId,
+        department,
+        session,
+        courses: Array.isArray(courses) ? courses : [courses]
+      }, { new: true });
+      if (!student) return res.status(404).send('Student not found');
+      res.redirect('/courses');
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+  };
 
+// DELETE student courses
+exports.deleteStudent = async (req, res) => {
+    const { id } = req.params;
+    await Student.findByIdAndDelete(id);
+    res.status(200).send('Student deleted');
+};
