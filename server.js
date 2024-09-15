@@ -1,9 +1,10 @@
+
 const express = require('express')
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const connectDB = require('./config/database.js');
 const studentRoutes = require('./routes/studentRoutes');
-// const courseRoutes = require('./routes/courseRoutes');
+const courseRoutes = require('./routes/courseRoutes');
 const hostelRoutes = require('./routes/hostelRoutes');
 
 // import middleware
@@ -26,17 +27,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // set template engine to ejs
 app.set("view engine","ejs")
 
-
-// Routes
-app.use(studentRoutes);
-// app.use(courseRoutes);
-// // app.use('/hostels', hostelRoutes);
-app.use(hostelRoutes);
-
 app.get('/', (req, res) => {
     res.render('index', { title: 'Student Portal | Home' });
 });
 
+app.use(studentRoutes);
+app.use(courseRoutes);
+app.use(hostelRoutes);
 
 // Listen to request
 app.listen(PORT, ()=>{
