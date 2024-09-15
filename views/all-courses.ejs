@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal | Courses</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1 class="animated-title">Student Portal </h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/courses">Courses </a></li>
+                <li><a href="/register-courses">Course Registration </a></li>
+                <li><a href="/hostels">Hostels </a></li>
+                <li><a href="/register-hostels">Hostel Registration </a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>School Courses</h2>
+        </section>
+    
+        <section id="studentList">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Course Code</th>
+                        <th>Course Name</th>
+                        <th>Department</th>
+                        <th>Credits</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="students">
+                    <% courses.forEach(course => { %>
+                        <tr>
+                            <td><%= course.code %></td>
+                            <td><%= course.name %></td>
+                            <td><%= course.department %></td>
+                            <td><%= course.credits %></td>
+                     
+                            <td class="button-container">
+                                <a href="/<%= course._id %>/edit" style="text-decoration: none;">
+                                    <button type="button" class="action-button edit-button">Edit</button>
+                                </a>
+                                <button class="action-button delete-button delete-btn" data-id="<%= course._id %>">Delete</button>
+                            </td>
+                          
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Student Portal Application</p>
+    </footer>
+    <script>
+        document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', async function() {
+            const studentId = this.getAttribute('data-id');
+            
+            const confirmed = confirm("Are you sure you want to delete your courses?");
+            if (!confirmed) return;
+
+            try {
+            const response = await fetch(`/${studentId}`, {
+                method: 'DELETE',
+                headers: {
+                'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                // If the delete was successful, remove the row from the table
+                this.closest('tr').remove();
+            } else {
+                alert('Failed to delete student');
+            }
+            } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred while trying to delete the student.');
+            }
+        });
+        });
+
+      </script>
+      
+</body>
+</html>
