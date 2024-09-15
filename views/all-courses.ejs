@@ -16,6 +16,7 @@
                 <li><a href="/register-courses">Course Registration </a></li>
                 <li><a href="/hostels">Hostels </a></li>
                 <li><a href="/register-hostels">Hostel Registration </a></li>
+                <li><a href="/all-courses">School Courses </a></li>
             </ul>
         </nav>
     </header>
@@ -32,7 +33,7 @@
                         <th>Course Name</th>
                         <th>Department</th>
                         <th>Credits</th>
-                        <th>Action</th>
+                        
                     </tr>
                 </thead>
                 <tbody id="students">
@@ -42,14 +43,6 @@
                             <td><%= course.name %></td>
                             <td><%= course.department %></td>
                             <td><%= course.credits %></td>
-                     
-                            <td class="button-container">
-                                <a href="/<%= course._id %>/edit" style="text-decoration: none;">
-                                    <button type="button" class="action-button edit-button">Edit</button>
-                                </a>
-                                <button class="action-button delete-button delete-btn" data-id="<%= course._id %>">Delete</button>
-                            </td>
-                          
                         </tr>
                     <% }); %>
                 </tbody>
